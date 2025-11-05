@@ -11,6 +11,10 @@ const client = new Client({
     ]
 });
 
+const express = require('express');
+const app = express();
+const PORT = process.env.PORT || 3000;
+
 // Sunucu bazlı su hatırlatma zamanlayıcılarını saklamak için bir Map
 const guildTimers = new Map();
 
@@ -263,5 +267,8 @@ Lütfen **sadece siz görebileceğiniz** aşağıdaki butonlardan seçiminizi ya
         }
     }
 });
+
+app.get('/', (req, res) => res.send('Bot aktif 🚀'));
+app.listen(PORT, () => console.log(`Render port ${PORT} üzerinde dinliyor...`));
 
 client.login(process.env.DISCORD_TOKEN);
